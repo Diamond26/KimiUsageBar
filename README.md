@@ -38,16 +38,16 @@ which is the exact same endpoint the Kimi Code CLI itself calls to show you your
 
 ```bash
 git clone https://github.com/Diamond26/KimiUsageBar.git
-ln -s "$(pwd)/KimiUsageBar" ~/.local/share/gnome-shell/extensions/kimi-usage@local.github.io
-glib-compile-schemas ~/.local/share/gnome-shell/extensions/kimi-usage@local.github.io/schemas
-gnome-extensions enable kimi-usage@local.github.io
+ln -s "$(pwd)/KimiUsageBar" ~/.local/share/gnome-shell/extensions/kimi-usage@Diamond26.github.io
+glib-compile-schemas ~/.local/share/gnome-shell/extensions/kimi-usage@Diamond26.github.io/schemas
+gnome-extensions enable kimi-usage@Diamond26.github.io
 ```
 
 Then log out and back in (GNOME Shell needs to rescan extensions — on Wayland there's no in-session reload like `Alt+F2 → r`).
 
 ## Settings
 
-Open with `gnome-extensions prefs kimi-usage@local.github.io`, or via the Extensions app. You can configure:
+Open with `gnome-extensions prefs kimi-usage@Diamond26.github.io`, or via the Extensions app. You can configure:
 
 - Refresh interval (30–600 seconds)
 - Which gauge to draw in the panel (ring / bar / none)
