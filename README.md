@@ -1,6 +1,6 @@
 # Kimi Usage
 
-A GNOME Shell extension that shows your **Kimi Code** subscription usage right in the top bar: the rolling **5-hour** window, the **weekly** window, and (when applicable) your **monthly overage budget**.
+A GNOME Shell extension that shows your **Kimi Code** subscription usage right in the top bar: the rolling **5-hour** window and the **weekly** window.
 
 It's the Kimi counterpart to [ClaudeCodeUsage](https://github.com/dvdstelt/ClaudeCodeUsage), built the same way: it reads the OAuth token that the `kimi` CLI already stores on your machine and asks Kimi's own usage endpoint how much of your quota is left — no extra login, no scraping, no separate API key.
 
@@ -8,7 +8,6 @@ It's the Kimi counterpart to [ClaudeCodeUsage](https://github.com/dvdstelt/Claud
 
 - **5-hour window** — usage and percentage for Kimi Code's rolling 5-hour quota, with a countdown to reset.
 - **Weekly window** — same, for the 7-day quota.
-- **Monthly overage budget** — if your account has a dollar-denominated monthly charge cap enabled, it's shown as e.g. `$3.20 / $20.00`. This row is hidden automatically if your account doesn't have one, since Kimi doesn't have a true monthly *token* quota the way it has 5-hour and weekly ones.
 
 The panel indicator draws a small ring or bar gauge (configurable) and turns green / orange / red depending on how close you are to the limit. Click it for the full breakdown.
 
@@ -52,7 +51,7 @@ Open with `gnome-extensions prefs kimi-usage@Diamond26.github.io`, or via the Ex
 - Refresh interval (30–600 seconds)
 - Which gauge to draw in the panel (ring / bar / none)
 - Which window the panel gauge reflects (5-hour or weekly)
-- Whether to show the percentage label, the reset countdown, and the monthly budget row
+- Whether to show the percentage label and the reset countdown
 - Panel position (left / center / right) and index within that box
 
 ## Known limitations

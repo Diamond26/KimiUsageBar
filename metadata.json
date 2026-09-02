@@ -1,5 +1,5 @@
 {
-  "description": "Shows Kimi Code subscription usage (5-hour, weekly, monthly budget) in the GNOME top bar. Reads your existing Kimi Code credentials; no extra login required.",
+  "description": "Shows Kimi Code subscription usage (5-hour, weekly) in the GNOME top bar. Reads your existing Kimi Code credentials; no extra login required.",
   "name": "Kimi Usage",
   "settings-schema": "org.gnome.shell.extensions.kimi-usage",
   "shell-version": [

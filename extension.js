@@ -13,7 +13,7 @@ import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
 import {readCredentials, isExpired, CredentialsError} from './lib/tokenStore.js';
 import {UsageClient, UsageError} from './lib/usageClient.js';
-import {normalizeUsage, formatCents} from './lib/usageModel.js';
+import {normalizeUsage} from './lib/usageModel.js';
 
 // Severity levels, least to most severe.
 const LEVEL_RANK = {ok: 0, warn: 1, crit: 2};
@@ -277,7 +277,7 @@ class KimiUsageIndicator extends PanelMenu.Button {
         this._cancellable = new Gio.Cancellable();
         this._lastFetchMs = 0;
         this._client = new UsageClient();
-        this._lastUsage = null; // {fiveHour, weekly, monthlyBudget}
+        this._lastUsage = null; // {fiveHour, weekly}
         this._lastResult = null; // 'ok' | 'error' | 'signed-out'
         this._countdownTimer = null;
         this._timer = null;
@@ -315,7 +315,6 @@ class KimiUsageIndicator extends PanelMenu.Button {
             'changed::panel-gauge', () => this._applyVisibility(),
             'changed::show-percentage', () => this._applyVisibility(),
             'changed::show-reset', () => this._applyVisibility(),
-            'changed::show-monthly-budget', () => this._render(this._lastUsage),
             'changed::panel-window', () => this._renderPanel(),
             'changed::poll-seconds', () => this._startTimer(),
             this);
@@ -441,11 +440,9 @@ class KimiUsageIndicator extends PanelMenu.Button {
 
         const rows = [];
         if (usage.fiveHour)
-            rows.push({key: 'five-hour', label: '5-hour limit', window: usage.fiveHour, kind: 'percent'});
+            rows.push({key: 'five-hour', label: '5-hour limit', window: usage.fiveHour});
         if (usage.weekly)
-            rows.push({key: 'weekly', label: 'Weekly limit', window: usage.weekly, kind: 'percent'});
-        if (this._settings.get_boolean('show-monthly-budget'))
-            rows.push({key: 'monthly', label: 'Monthly overage budget', window: usage.monthlyBudget, kind: 'currency'});
+            rows.push({key: 'weekly', label: 'Weekly limit', window: usage.weekly});
 
         this._meterBindings = [];
         const seen = new Set();
@@ -483,17 +480,6 @@ class KimiUsageIndicator extends PanelMenu.Button {
     }
 
     _applyRow(meter, row) {
-        if (row.kind === 'currency') {
-            const mb = row.window;
-            if (!mb || !mb.enabled || mb.usedCents === null || mb.limitCents === null) {
-                meter.setMuted();
-                return;
-            }
-            const level = utilLevel(mb.percent ?? 0);
-            const text = `${formatCents(mb.usedCents)} / ${formatCents(mb.limitCents)}`;
-            meter.setPctText(mb.percent !== null ? `${Math.round(mb.percent)}%` : '—', text, level);
-            return;
-        }
         const w = row.window;
         if (!w || w.percent === null) {
             meter.setMuted();
@@ -711,7 +697,7 @@ class KimiUsageIndicator extends PanelMenu.Button {
 export default class KimiUsageExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
-        const iconPath = GLib.build_filenamev([this.path, 'icons', 'kimi-logo.png']);
+        const iconPath = GLib.build_filenamev([this.path, 'icons', 'kimi-logo.svg']);
         this._indicator = new KimiUsageIndicator(this._settings, () => this.openPreferences(), iconPath);
 
         this._settings.connectObject(

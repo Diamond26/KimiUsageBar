@@ -27,11 +27,6 @@
       <summary>Show the time until reset</summary>
       <description>Display, in the panel, the time left before the window selected by panel-window resets.</description>
     </key>
-    <key name="show-monthly-budget" type="b">
-      <default>true</default>
-      <summary>Show the monthly overage budget row</summary>
-      <description>Display a "Monthly overage budget" row in the popup, below the weekly row. Shown muted ("—") when Kimi doesn't report a dollar-based monthly charge cap for the account.</description>
-    </key>
     <key name="panel-window" type="s">
       <choices>
         <choice value="five-hour"/>

@@ -40,8 +40,6 @@ export default class KimiUsagePreferences extends ExtensionPreferences {
             'Show usage text', 'Display the usage percentage of the panel window (e.g. "42%") next to the gauge.'));
         elements.add(this._switchRow(settings, 'show-reset',
             'Show time until reset', 'Display the time left before the panel window resets.'));
-        elements.add(this._switchRow(settings, 'show-monthly-budget',
-            'Show monthly overage budget', 'Display a "Monthly overage budget" row in the popup, below the weekly row (shown muted if not enabled on your account).'));
 
         // ---- behaviour ----
         const behaviour = new Adw.PreferencesGroup({title: 'Behaviour'});
