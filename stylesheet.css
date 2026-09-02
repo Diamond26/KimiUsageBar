@@ -4,9 +4,8 @@
     padding: 0 4px;
 }
 .ku-panel-icon {
-    font-weight: bold;
-    font-size: 10pt;
     padding: 0 2px;
+    icon-size: 16px;
 }
 .ku-ring {
     width: 18px;

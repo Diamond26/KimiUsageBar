@@ -268,7 +268,7 @@ class PanelBar {
 
 const KimiUsageIndicator = GObject.registerClass(
 class KimiUsageIndicator extends PanelMenu.Button {
-    _init(settings, openPreferences) {
+    _init(settings, openPreferences, iconPath) {
         super._init(0.5, 'Kimi Usage');
 
         this._settings = settings;
@@ -286,9 +286,10 @@ class KimiUsageIndicator extends PanelMenu.Button {
 
         // ---- panel button ----
         this._panelBox = new St.BoxLayout({style_class: 'ku-panel'});
-        this._panelIcon = new St.Label({
-            text: 'Kimi',
-            style_class: 'ku-panel-icon',
+        this._panelIcon = new St.Icon({
+            gicon: Gio.icon_new_for_string(iconPath),
+            icon_size: 16,
+            style_class: 'system-status-icon ku-panel-icon',
             y_align: Clutter.ActorAlign.CENTER,
         });
         this._ring = new Ring();
@@ -517,20 +518,15 @@ class KimiUsageIndicator extends PanelMenu.Button {
         const which = this._settings.get_string('panel-window');
         const primary = which === 'weekly' ? usage.weekly : usage.fiveHour;
 
-        const parts = [];
-        if (usage.fiveHour?.percent !== null && usage.fiveHour !== null && usage.fiveHour.percent !== undefined)
-            parts.push(`5h ${Math.round(usage.fiveHour.percent)}%`);
-        if (usage.weekly?.percent !== null && usage.weekly !== null && usage.weekly.percent !== undefined)
-            parts.push(`Wk ${Math.round(usage.weekly.percent)}%`);
-        this._panelText.text = parts.length ? parts.join(' · ') : '—';
-
         if (primary && primary.percent !== null) {
             const level = utilLevel(primary.percent);
+            this._panelText.text = `${Math.round(primary.percent)}%`;
             this._panelText.style_class = `ku-panel-text ${levelClass(level)}`;
             this._ring.setValue(primary.percent, level);
             this._panelBar.setValue(primary.percent, level);
             this._panelReset.text = primary.resetsAt ? compactReset(primary.resetsAt) : '';
         } else {
+            this._panelText.text = '—';
             this._panelText.style_class = 'ku-panel-text';
             this._ring.setUnknown();
             this._panelBar.setUnknown();
@@ -715,7 +711,8 @@ class KimiUsageIndicator extends PanelMenu.Button {
 export default class KimiUsageExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
-        this._indicator = new KimiUsageIndicator(this._settings, () => this.openPreferences());
+        const iconPath = GLib.build_filenamev([this.path, 'icons', 'kimi-symbolic.svg']);
+        this._indicator = new KimiUsageIndicator(this._settings, () => this.openPreferences(), iconPath);
 
         this._settings.connectObject(
             'changed::panel-position', () => this._place(),

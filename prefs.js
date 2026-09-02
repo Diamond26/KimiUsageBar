@@ -22,7 +22,7 @@ export default class KimiUsagePreferences extends ExtensionPreferences {
         page.add(elements);
 
         elements.add(this._switchRow(settings, 'show-icon',
-            'Show "Kimi" label', 'Display the "Kimi" text in the panel.'));
+            'Show Kimi logo', 'Display the Kimi logo icon in the panel.'));
 
         const gaugeRow = new Adw.ComboRow({
             title: 'Usage gauge',
@@ -37,7 +37,7 @@ export default class KimiUsagePreferences extends ExtensionPreferences {
         elements.add(gaugeRow);
 
         elements.add(this._switchRow(settings, 'show-percentage',
-            'Show usage text', 'Display the compact "5h 42% · Wk 18%" text in the panel.'));
+            'Show usage text', 'Display the usage percentage of the panel window (e.g. "42%") next to the gauge.'));
         elements.add(this._switchRow(settings, 'show-reset',
             'Show time until reset', 'Display the time left before the panel window resets.'));
         elements.add(this._switchRow(settings, 'show-monthly-budget',

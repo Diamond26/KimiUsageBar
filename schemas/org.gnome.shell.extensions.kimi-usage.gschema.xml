@@ -4,8 +4,8 @@
           path="/org/gnome/shell/extensions/kimi-usage/">
     <key name="show-icon" type="b">
       <default>true</default>
-      <summary>Show the Kimi label</summary>
-      <description>Display the "Kimi" label in the panel.</description>
+      <summary>Show the Kimi logo</summary>
+      <description>Display the Kimi logo icon in the panel.</description>
     </key>
     <key name="panel-gauge" type="s">
       <choices>
@@ -20,7 +20,7 @@
     <key name="show-percentage" type="b">
       <default>true</default>
       <summary>Show the usage percentage</summary>
-      <description>Display the usage percentage text in the panel (e.g. "5h 42% · Wk 18%").</description>
+      <description>Display the usage percentage of the window selected by panel-window (e.g. "42%") next to the panel gauge.</description>
     </key>
     <key name="show-reset" type="b">
       <default>false</default>
