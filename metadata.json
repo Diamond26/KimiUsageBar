@@ -1,0 +1,17 @@
+{
+  "description": "Shows Kimi Code subscription usage (5-hour, weekly, monthly budget) in the GNOME top bar. Reads your existing Kimi Code credentials; no extra login required.",
+  "name": "Kimi Usage",
+  "settings-schema": "org.gnome.shell.extensions.kimi-usage",
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50"
+  ],
+  "url": "https://github.com/Diamond26/KimiUsageBar",
+  "uuid": "kimi-usage@local.github.io",
+  "version": 1,
+  "version-name": "1.0.0"
+}

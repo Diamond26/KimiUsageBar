@@ -1,0 +1,99 @@
+/* ===== panel button ===== */
+.ku-panel {
+    spacing: 5px;
+    padding: 0 4px;
+}
+.ku-panel-icon {
+    font-weight: bold;
+    font-size: 10pt;
+    padding: 0 2px;
+}
+.ku-ring {
+    width: 18px;
+    height: 18px;
+}
+.ku-panel-bar {
+    width: 34px;
+    height: 10px;
+    border-radius: 99px;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.ku-panel-bar-fill {
+    height: 10px;
+    border-radius: 99px;
+    background-color: #3584e4;
+}
+.ku-panel-bar-fill.ku-ok   { background-color: #33d17a; }
+.ku-panel-bar-fill.ku-warn { background-color: #ff7800; }
+.ku-panel-bar-fill.ku-crit { background-color: #e01b24; }
+.ku-panel-text {
+    font-weight: bold;
+    font-feature-settings: "tnum";
+}
+.ku-panel-text.ku-warn { color: #ffa348; }
+.ku-panel-text.ku-crit { color: #ff6b6b; }
+.ku-panel-reset {
+    font-size: 9pt;
+    color: rgba(128, 128, 128, 1.0);
+    font-feature-settings: "tnum";
+}
+
+/* ===== popup ===== */
+.ku-popup {
+    width: 320px;
+    spacing: 0;
+}
+.ku-title { font-weight: bold; font-size: 12pt; }
+.ku-subtitle { font-size: 9pt; color: rgba(128, 128, 128, 1.0); }
+.ku-header {
+    spacing: 11px;
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+/* ===== meters ===== */
+.ku-meter { spacing: 5px; margin-bottom: 11px; }
+.ku-meter-row { spacing: 8px; }
+.ku-meter-name { font-size: 11pt; }
+.ku-meter-pct { font-weight: bold; font-feature-settings: "tnum"; }
+.ku-track {
+    width: 300px;
+    height: 7px;
+    border-radius: 99px;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.ku-fill {
+    height: 7px;
+    border-radius: 99px;
+    background-color: #3584e4;
+}
+.ku-fill.ku-ok   { background-color: #33d17a; }
+.ku-fill.ku-warn { background-color: #ff7800; }
+.ku-fill.ku-crit { background-color: #e01b24; }
+.ku-caption { font-size: 9pt; color: rgba(128, 128, 128, 1.0); }
+
+.ku-error {
+    font-size: 9.5pt;
+    color: #ff9c8a;
+    margin: 4px 0;
+}
+.ku-error.ku-dim { color: rgba(128, 128, 128, 1.0); }
+
+/* ===== footer ===== */
+.ku-footer {
+    spacing: 8px;
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(128, 128, 128, 0.25);
+}
+.ku-updated { font-size: 9pt; color: rgba(128, 128, 128, 1.0); margin-top: 6px; }
+.ku-refresh {
+    font-size: 9pt;
+    font-weight: bold;
+    color: #62a0ea;
+    padding: 4px 6px;
+    border-radius: 6px;
+    text-align: center;
+}
+.ku-refresh:hover { background-color: rgba(128, 128, 128, 0.20); }

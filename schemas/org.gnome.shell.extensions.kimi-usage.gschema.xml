@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.kimi-usage"
+          path="/org/gnome/shell/extensions/kimi-usage/">
+    <key name="show-icon" type="b">
+      <default>true</default>
+      <summary>Show the Kimi label</summary>
+      <description>Display the "Kimi" label in the panel.</description>
+    </key>
+    <key name="panel-gauge" type="s">
+      <choices>
+        <choice value="ring"/>
+        <choice value="bar"/>
+        <choice value="none"/>
+      </choices>
+      <default>"ring"</default>
+      <summary>Panel usage gauge</summary>
+      <description>Which usage gauge to draw in the panel: a circular ring, a horizontal bar, or none.</description>
+    </key>
+    <key name="show-percentage" type="b">
+      <default>true</default>
+      <summary>Show the usage percentage</summary>
+      <description>Display the usage percentage text in the panel (e.g. "5h 42% · Wk 18%").</description>
+    </key>
+    <key name="show-reset" type="b">
+      <default>false</default>
+      <summary>Show the time until reset</summary>
+      <description>Display, in the panel, the time left before the window selected by panel-window resets.</description>
+    </key>
+    <key name="show-monthly-budget" type="b">
+      <default>true</default>
+      <summary>Show the monthly overage budget row</summary>
+      <description>Display a "Monthly overage budget" row in the popup when Kimi reports a dollar-based monthly charge cap (extra_usage). Automatically hidden when that data isn't present.</description>
+    </key>
+    <key name="panel-window" type="s">
+      <choices>
+        <choice value="five-hour"/>
+        <choice value="weekly"/>
+      </choices>
+      <default>"five-hour"</default>
+      <summary>Panel usage window</summary>
+      <description>Which usage window the panel ring reflects: the 5-hour window or the weekly window.</description>
+    </key>
+    <key name="panel-position" type="s">
+      <choices>
+        <choice value="left"/>
+        <choice value="center"/>
+        <choice value="right"/>
+      </choices>
+      <default>"right"</default>
+      <summary>Panel box</summary>
+      <description>Which section of the top bar the indicator sits in: left (next to Activities), center (by the clock), or right (the status area).</description>
+    </key>
+    <key name="panel-index" type="i">
+      <range min="0" max="20"/>
+      <default>0</default>
+      <summary>Position within the panel box</summary>
+      <description>Where the indicator sits among the other items in its panel box. 0 is the first slot; larger values move it further along.</description>
+    </key>
+    <key name="poll-seconds" type="i">
+      <range min="30" max="600"/>
+      <default>30</default>
+      <summary>Refresh interval</summary>
+      <description>How often, in seconds, to poll for updated usage.</description>
+    </key>
+  </schema>
+</schemalist>
