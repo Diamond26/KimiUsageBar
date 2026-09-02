@@ -289,7 +289,7 @@ class KimiUsageIndicator extends PanelMenu.Button {
         this._panelIcon = new St.Icon({
             gicon: Gio.icon_new_for_string(iconPath),
             icon_size: 16,
-            style_class: 'system-status-icon ku-panel-icon',
+            style_class: 'ku-panel-icon',
             y_align: Clutter.ActorAlign.CENTER,
         });
         this._ring = new Ring();
@@ -444,7 +444,7 @@ class KimiUsageIndicator extends PanelMenu.Button {
             rows.push({key: 'five-hour', label: '5-hour limit', window: usage.fiveHour, kind: 'percent'});
         if (usage.weekly)
             rows.push({key: 'weekly', label: 'Weekly limit', window: usage.weekly, kind: 'percent'});
-        if (usage.monthlyBudget?.enabled && this._settings.get_boolean('show-monthly-budget'))
+        if (this._settings.get_boolean('show-monthly-budget'))
             rows.push({key: 'monthly', label: 'Monthly overage budget', window: usage.monthlyBudget, kind: 'currency'});
 
         this._meterBindings = [];
@@ -485,7 +485,7 @@ class KimiUsageIndicator extends PanelMenu.Button {
     _applyRow(meter, row) {
         if (row.kind === 'currency') {
             const mb = row.window;
-            if (mb.usedCents === null || mb.limitCents === null) {
+            if (!mb || !mb.enabled || mb.usedCents === null || mb.limitCents === null) {
                 meter.setMuted();
                 return;
             }
@@ -711,7 +711,7 @@ class KimiUsageIndicator extends PanelMenu.Button {
 export default class KimiUsageExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
-        const iconPath = GLib.build_filenamev([this.path, 'icons', 'kimi-symbolic.svg']);
+        const iconPath = GLib.build_filenamev([this.path, 'icons', 'kimi-logo.png']);
         this._indicator = new KimiUsageIndicator(this._settings, () => this.openPreferences(), iconPath);
 
         this._settings.connectObject(

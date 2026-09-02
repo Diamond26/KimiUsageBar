@@ -30,7 +30,7 @@
     <key name="show-monthly-budget" type="b">
       <default>true</default>
       <summary>Show the monthly overage budget row</summary>
-      <description>Display a "Monthly overage budget" row in the popup when Kimi reports a dollar-based monthly charge cap (extra_usage). Automatically hidden when that data isn't present.</description>
+      <description>Display a "Monthly overage budget" row in the popup, below the weekly row. Shown muted ("—") when Kimi doesn't report a dollar-based monthly charge cap for the account.</description>
     </key>
     <key name="panel-window" type="s">
       <choices>
