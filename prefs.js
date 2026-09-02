@@ -1,4 +1,5 @@
 import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 
@@ -96,6 +97,26 @@ export default class KimiUsagePreferences extends ExtensionPreferences {
                 'then use Refresh in the popup — this extension does not attempt to refresh tokens itself.',
         });
         page.add(about);
+
+        // ---- credits ----
+        const credits = new Adw.PreferencesGroup({title: 'Credits'});
+        page.add(credits);
+
+        const authorRow = new Adw.ActionRow({
+            title: 'Created by Diamond26',
+        });
+        credits.add(authorRow);
+
+        const githubRow = new Adw.ActionRow({
+            title: 'Source code',
+            subtitle: 'github.com/Diamond26/KimiUsageBar',
+            activatable: true,
+        });
+        githubRow.add_suffix(new Gtk.Image({icon_name: 'adw-external-link-symbolic'}));
+        githubRow.connect('activated', () => {
+            Gtk.show_uri(window, 'https://github.com/Diamond26/KimiUsageBar', Gdk.CURRENT_TIME);
+        });
+        credits.add(githubRow);
     }
 
     _switchRow(settings, key, title, subtitle) {
